@@ -18,9 +18,7 @@ public class LinksTests extends TestBase{
     public void getAllLinksTest(){
         new SidePanel(driver).selectLinks();
         new LinksPage(driver).getAllLinks();
-
     }
-
 
     @Test
     public void getBrokenLinks() {

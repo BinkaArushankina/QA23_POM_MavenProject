@@ -15,9 +15,6 @@ public class PracticeFormTests extends TestBase{
         new SidePanel(driver).selectPracticeForm();
     }
 
-
-
-
     public void fillPracticeFormTest() {
         new PracticeFormPage(driver).hideIframes();
         new PracticeFormPage(driver).enterPersonalData

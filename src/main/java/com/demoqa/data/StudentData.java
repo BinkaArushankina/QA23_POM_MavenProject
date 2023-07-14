@@ -16,9 +16,9 @@ public class StudentData {
 
     public static final String[] SUBJECTS = {"Math", "English", "Physics"};
 
-    public static final String[] HOBBIES = {"Sport", "Reading", "Music"};
+    public static final String[] HOBBIES = {"Sports", "Reading", "Music"};
 
-    public static final String PHOTO = "C:/Tools/Image2023PNG.png";
+    public static final String PHOTO = "C:/Tools/1.jpg";
 
     public static final String ADDRESS = "Tortuga";
 

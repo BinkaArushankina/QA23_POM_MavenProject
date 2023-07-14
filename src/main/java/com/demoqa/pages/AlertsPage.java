@@ -1,13 +1,10 @@
 package com.demoqa.pages;
-
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
 import java.time.Duration;
 
 public class AlertsPage extends BasePage{
@@ -26,7 +23,6 @@ public class AlertsPage extends BasePage{
             driver.switchTo().alert().sendKeys(message);
             driver.switchTo().alert().accept();
         }
-
         return this;
     }
 
@@ -38,7 +34,6 @@ public class AlertsPage extends BasePage{
         return this;
     }
 
-
     @FindBy(id = "timerAlertButton")
     WebElement timerAlertButton;
     public AlertsPage acceptTimerAlert() {
@@ -46,7 +41,6 @@ public class AlertsPage extends BasePage{
 
         new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.alertIsPresent()).accept();
-
         return this;
     }
 

@@ -26,7 +26,6 @@ public class AlertsTests extends TestBase{
 
     }
 
-
     @Test
     public void confirmAlertTest() {
         new AlertsPage(driver).selectAlertConfirm("Cancel").assertConfirm("Cancel");

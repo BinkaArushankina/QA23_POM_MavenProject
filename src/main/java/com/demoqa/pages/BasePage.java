@@ -1,9 +1,6 @@
 package com.demoqa.pages;
-
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -76,7 +73,27 @@ public abstract class BasePage {
         }
 
     }
+    public void selectOS(WebElement element) {
+        String os = System.getProperty("os.name");
+        System.out.println("My OS: " + os);
 
+        if (os.startsWith("Mac")) {
+            element.sendKeys(Keys.chord(Keys.COMMAND, "a"));
+        }else {
+            element.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        }
+    }
+
+    public void clickWithRectangle(WebElement element, int x, int y){
+        Rectangle rectangle = element.getRect();
+
+        int offSetX = rectangle.getWidth() / x;
+        int offSetY = rectangle.getHeight() / y;
+
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).perform();
+        actions.moveByOffset(-offSetX, -offSetY).click().perform();
+    }
     public void verifyLinks(String linkURL) {
         try {
             URL url = new URL(linkURL);
@@ -95,5 +112,7 @@ public abstract class BasePage {
         }
 
     }
+
+
 
 }

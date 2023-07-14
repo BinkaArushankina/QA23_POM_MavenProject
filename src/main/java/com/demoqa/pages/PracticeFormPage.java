@@ -6,8 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
-import javax.swing.*;
-
 public class PracticeFormPage extends BasePage {
     public PracticeFormPage(WebDriver driver) {
         super(driver);
@@ -34,9 +32,6 @@ public class PracticeFormPage extends BasePage {
 
         return this;
     }
-
-
-
 
     @FindBy(css = "[for='gender-radio-1']")
     WebElement male;
@@ -68,22 +63,11 @@ public class PracticeFormPage extends BasePage {
 
         clickWithJSExecutor(dateOfBirthInput, 0, 100);
 
-        selectOS();
+        selectOS(dateOfBirthInput);
 
         dateOfBirthInput.sendKeys(bDay);
         dateOfBirthInput.sendKeys(Keys.ENTER);
         return this;
-    }
-
-    public void selectOS() {
-        String os = System.getProperty("os.name");
-        System.out.println("My OS: " + os);
-
-        if (os.startsWith("Mac")) {
-            dateOfBirthInput.sendKeys(Keys.chord(Keys.COMMAND, "a"));
-        }else {
-            dateOfBirthInput.sendKeys(Keys.chord(Keys.CONTROL, "a"));
-        }
     }
 
     @FindBy(id = "subjectsInput")
@@ -109,14 +93,12 @@ public class PracticeFormPage extends BasePage {
     public PracticeFormPage selectHobby(String[] hobbies) {
         for (int i = 0; i < hobbies.length; i++) {
             if (hobbies[i].equals("Sports")) {
-                clickWithJSExecutor(sports, 0, 300);
+                clickWithJSExecutor(sports, 0, 100);
             } if (hobbies[i].equals("Reading")) {
-                clickWithJSExecutor(reading, 0, 300);
+                clickWithJSExecutor(reading, 0, 100);
             } if (hobbies[i].equals("Music")) {
-                clickWithJSExecutor(music, 0, 300);
+                clickWithJSExecutor(music, 0, 100);
             }
-
-
         }
         return this;
     }
@@ -125,19 +107,15 @@ public class PracticeFormPage extends BasePage {
     WebElement uploadPicture;
 
     public PracticeFormPage uploadFile(String path) {
-
         uploadPicture.sendKeys(path);
-
         return this;
     }
-
 
     @FindBy(id = "currentAddress")
     WebElement currentAddress;
 
     public PracticeFormPage enterAddress(String address) {
         type(currentAddress, address);
-
         return this;
     }
 
@@ -147,7 +125,6 @@ public class PracticeFormPage extends BasePage {
     @FindBy(id = "react-select-3-input")
     WebElement stateInput;
 
-
     public PracticeFormPage selectState(String state) {
         click(stateContainer);
         stateInput.sendKeys(state);
@@ -155,7 +132,6 @@ public class PracticeFormPage extends BasePage {
 
         return  this;
     }
-
 
     @FindBy(id = "city")
     WebElement cityContainer;
@@ -175,7 +151,7 @@ public class PracticeFormPage extends BasePage {
     WebElement submit;
 
     public PracticeFormPage submit() {
-        clickWithRectangle(submit, 2, 4);
+        clickWithRectangle(submit, 2, 3);
 
         return this;
     }
@@ -189,10 +165,6 @@ public class PracticeFormPage extends BasePage {
         Actions actions = new Actions(driver);
                 actions.moveToElement(element).perform();
                 actions.moveByOffset(-offSetX, -offSetY).click().perform();
-
-
-
-
     }
 
     @FindBy(id = "example-modal-sizes-title-lg")
@@ -209,7 +181,6 @@ public class PracticeFormPage extends BasePage {
     WebElement year;
 
 
-
     public PracticeFormPage selectDate(String m, String y, String d) {
 
         clickWithJSExecutor(dateOfBirthInput, 0, 100);
@@ -218,7 +189,7 @@ public class PracticeFormPage extends BasePage {
         select.selectByVisibleText(m);
 
         Select select1 = new Select(year);
-        select.selectByVisibleText(y);
+        select1.selectByVisibleText(y);
 
         driver.findElement(By.xpath("//div[.='" + d + "']")).click();// тест даты календаря
 
